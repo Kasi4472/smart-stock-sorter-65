@@ -28,8 +28,8 @@ export const orders: Order[] = [
     events: [{ at: ago(9), label: "Order received" }, { at: ago(8), label: "Stock allocated", detail: "SKU-1001 5/5" }],
   },
   {
-    id: "ORD-4823", customer: "Bright Labs", channel: "Marketplace", tier: "express", createdAt: ago(2), dueInHours: 8, status: "new",
-    lines: [{ sku: "SKU-1003", qty: 6, allocated: 0, picked: 0 }, { sku: "SKU-1010", qty: 6, allocated: 0, picked: 0 }],
+    id: "ORD-4823", customer: "Bright Labs", channel: "Marketplace", tier: "express", createdAt: ago(2), dueInHours: 8, status: "picking",
+    lines: [{ sku: "SKU-1003", qty: 6, allocated: 6, picked: 0 }, { sku: "SKU-1010", qty: 6, allocated: 6, picked: 0 }],
     events: [{ at: ago(2), label: "Order received" }],
   },
   {
@@ -48,8 +48,8 @@ export const orders: Order[] = [
     events: [{ at: ago(3), label: "Order received" }],
   },
   {
-    id: "ORD-4827", customer: "Foundry Supply", channel: "B2B", tier: "standard", createdAt: ago(26), dueInHours: 14, status: "new",
-    lines: [{ sku: "SKU-1006", qty: 8, allocated: 0, picked: 0 }, { sku: "SKU-1009", qty: 30, allocated: 0, picked: 0 }],
+    id: "ORD-4827", customer: "Foundry Supply", channel: "B2B", tier: "standard", createdAt: ago(26), dueInHours: 14, status: "qc",
+    lines: [{ sku: "SKU-1006", qty: 8, allocated: 8, picked: 8 }, { sku: "SKU-1009", qty: 30, allocated: 30, picked: 30 }],
     events: [{ at: ago(26), label: "Order received" }],
   },
   {
@@ -58,13 +58,13 @@ export const orders: Order[] = [
     events: [{ at: ago(12), label: "Order received" }],
   },
   {
-    id: "ORD-4829", customer: "Perch Analytics", channel: "Marketplace", tier: "express", createdAt: ago(7), dueInHours: 10, status: "new",
-    lines: [{ sku: "SKU-1010", qty: 5, allocated: 0, picked: 0 }, { sku: "SKU-1002", qty: 6, allocated: 0, picked: 0 }],
+    id: "ORD-4829", customer: "Perch Analytics", channel: "Marketplace", tier: "express", createdAt: ago(7), dueInHours: 10, status: "packing",
+    lines: [{ sku: "SKU-1010", qty: 5, allocated: 5, picked: 5 }, { sku: "SKU-1002", qty: 6, allocated: 6, picked: 6 }],
     events: [{ at: ago(7), label: "Order received" }],
   },
   {
-    id: "ORD-4830", customer: "Vela Interiors", channel: "Retail", tier: "standard", createdAt: ago(31), dueInHours: 52, status: "new",
-    lines: [{ sku: "SKU-1006", qty: 6, allocated: 0, picked: 0 }],
+    id: "ORD-4830", customer: "Vela Interiors", channel: "Retail", tier: "standard", createdAt: ago(31), dueInHours: 52, status: "dispatched",
+    lines: [{ sku: "SKU-1006", qty: 6, allocated: 6, picked: 6 }],
     events: [{ at: ago(31), label: "Order received" }],
   },
 ];
