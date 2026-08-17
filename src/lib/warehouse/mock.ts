@@ -1,7 +1,7 @@
 import type { Order, Product, WarehouseException } from "./types";
 
 export const products: Product[] = [
-  { sku: "SKU-1001", name: "Aurora Wireless Headset", category: "Audio", zone: "A", bin: "A-04-12", onHand: 7, reserved: 0, damaged: 1, reorderPoint: 25, reorderQty: 120, unitCost: 62, leadTimeDays: 6, dailyDemand: 9 },
+  { sku: "SKU-1001", name: "Aurora Wireless Headset", category: "Audio", zone: "A", bin: "A-04-12", onHand: 12, reserved: 5, damaged: 1, reorderPoint: 25, reorderQty: 120, unitCost: 62, leadTimeDays: 6, dailyDemand: 9 },
   { sku: "SKU-1002", name: "Nomad 20K Power Bank", category: "Power", zone: "A", bin: "A-07-03", onHand: 142, reserved: 0, damaged: 0, reorderPoint: 60, reorderQty: 200, unitCost: 18, leadTimeDays: 4, dailyDemand: 14 },
   { sku: "SKU-1003", name: "Kestrel Mechanical Keyboard", category: "Peripherals", zone: "B", bin: "B-02-08", onHand: 34, reserved: 0, damaged: 2, reorderPoint: 40, reorderQty: 100, unitCost: 74, leadTimeDays: 9, dailyDemand: 6 },
   { sku: "SKU-1004", name: "Orbit 4K Webcam", category: "Video", zone: "B", bin: "B-05-01", onHand: 0, reserved: 0, damaged: 0, reorderPoint: 30, reorderQty: 90, unitCost: 55, leadTimeDays: 7, dailyDemand: 5 },
@@ -23,9 +23,9 @@ export const orders: Order[] = [
     events: [{ at: ago(5), label: "Order received", detail: "B2B channel" }],
   },
   {
-    id: "ORD-4822", customer: "Ana Sørensen", channel: "Direct", tier: "standard", createdAt: ago(9), dueInHours: 30, status: "new",
-    lines: [{ sku: "SKU-1001", qty: 5, allocated: 0, picked: 0 }],
-    events: [{ at: ago(9), label: "Order received" }],
+    id: "ORD-4822", customer: "Ana Sørensen", channel: "Direct", tier: "standard", createdAt: ago(9), dueInHours: 30, status: "allocated",
+    lines: [{ sku: "SKU-1001", qty: 5, allocated: 5, picked: 0 }],
+    events: [{ at: ago(9), label: "Order received" }, { at: ago(8), label: "Stock allocated", detail: "SKU-1001 5/5" }],
   },
   {
     id: "ORD-4823", customer: "Bright Labs", channel: "Marketplace", tier: "express", createdAt: ago(2), dueInHours: 8, status: "new",
