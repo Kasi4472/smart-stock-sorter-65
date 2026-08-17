@@ -28,11 +28,21 @@ const WarehouseContext = createContext<Ctx | null>(null);
 const stamp = () => new Date().toISOString();
 
 export function WarehouseProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<WarehouseState>({
-    products: mock.products,
-    orders: mock.orders,
-    exceptions: mock.exceptions,
-    log: [{ at: stamp(), label: "Shift started", detail: "Day shift · 6 pickers online" }],
+  const [state, setState] = useState<WarehouseState>(() => {
+    const base: WarehouseState = {
+      products: mock.products,
+      orders: mock.orders,
+      exceptions: mock.exceptions,
+      log: [{ at: stamp(), label: "Shift started", detail: "Day shift · 6 pickers online" }],
+    };
+    // Boot with an allocation pass so the floor opens in a realistic state.
+    const { products, orders, notes } = allocate(base);
+    return {
+      ...base,
+      products,
+      orders,
+      log: [{ at: stamp(), label: "Opening allocation run", detail: `${notes.length} order(s) planned` }, ...base.log],
+    };
   });
   const [dismissed, setDismissed] = useState<string[]>([]);
 
