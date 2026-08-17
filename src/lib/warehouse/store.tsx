@@ -112,12 +112,13 @@ export function WarehouseProvider({ children }: { children: ReactNode }) {
         toast.error("Cannot advance", { description: `${orderId} is ${order.status.replace("_", " ")}` });
         return s;
       }
-      const labels: Record<string, string> = {
+      const labelMap: Record<string, string> = {
         picking: "Released to picking",
         packing: "Picking complete → packing",
         qc: "Packed → quality check",
         dispatched: "QC passed → dispatched",
       };
+      const label = labelMap[target] ?? "Stage advanced";
       let products = s.products;
       if (target === "dispatched") {
         products = s.products.map((p) => {
@@ -132,12 +133,12 @@ export function WarehouseProvider({ children }: { children: ReactNode }) {
               ...o,
               status: target,
               lines: target === "packing" ? o.lines.map((l) => ({ ...l, picked: l.allocated })) : o.lines,
-              events: [...o.events, { at: stamp(), label: labels[target] }],
+              events: [...o.events, { at: stamp(), label }],
             }
           : o,
       );
-      toast.success(labels[target], { description: orderId });
-      return push({ ...s, orders, products }, labels[target], orderId);
+      toast.success(label, { description: orderId });
+      return push({ ...s, orders, products }, label, orderId);
     });
   }, []);
 
