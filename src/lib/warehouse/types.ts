@@ -36,7 +36,7 @@ export type OrderStatus =
 export type OrderEvent = {
   at: string;
   label: string;
-  detail?: string;
+  detail?: string | undefined;
 };
 
 export type Order = {
@@ -49,7 +49,7 @@ export type Order = {
   status: OrderStatus;
   lines: OrderLine[];
   events: OrderEvent[];
-  assignee?: string;
+  assignee?: string | undefined;
 };
 
 export type ExceptionType = "damaged" | "missing" | "short_pick" | "qc_fail";
@@ -59,10 +59,10 @@ export type WarehouseException = {
   type: ExceptionType;
   sku: string;
   qty: number;
-  orderId?: string;
+  orderId?: string | undefined;
   openedAt: string;
   status: "open" | "resolved";
-  resolution?: string;
+  resolution?: string | undefined;
 };
 
 export type Decision = {
