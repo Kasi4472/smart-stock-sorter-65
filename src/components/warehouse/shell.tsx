@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { useWarehouse } from "@/lib/warehouse/store";
+import { NotificationBell } from "./notifications";
 import { cn } from "@/lib/utils";
 
 const nav = [
@@ -92,7 +93,10 @@ export function Shell({
               <h1 className="text-xl font-bold tracking-tight">{title}</h1>
               <p className="text-sm text-muted-foreground">{subtitle}</p>
             </div>
-            <div className="flex flex-wrap items-center gap-2">{actions}</div>
+            <div className="flex flex-wrap items-center gap-2">
+              <NotificationBell />
+              {actions}
+            </div>
           </div>
           <nav className="mt-3 flex gap-1 overflow-x-auto md:hidden">
             {nav.map((item) => (
